@@ -1,0 +1,8 @@
+abstra==2.20.1
+pandas
+google-api-python-client
+python-dateutil
+docxtpl
+python-docx
+requests
+python-dotenv

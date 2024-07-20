@@ -1,0 +1,190 @@
+{
+  "workspace": {
+    "id": null,
+    "name": "Untitled Workspace",
+    "theme": null,
+    "logo_url": null,
+    "brand_name": null,
+    "main_color": "#6200EE",
+    "font_color": null,
+    "font_family": null,
+    "language": "en"
+  },
+  "kanban": {
+    "access_control": {
+      "is_public": false,
+      "required_roles": []
+    }
+  },
+  "home": {
+    "access_control": {
+      "is_public": true,
+      "required_roles": []
+    }
+  },
+  "jobs": [
+    {
+      "id": "f5b3f28c-7198-4798-9f67-54e49fd529bd",
+      "file": "depreciation_calculation.py",
+      "title": "Depreciation Calculation",
+      "schedule": "0 3 1 * *",
+      "workflow_position": [
+        156.0,
+        408.0
+      ],
+      "transitions": []
+    }
+  ],
+  "hooks": [],
+  "forms": [
+    {
+      "id": "34dfccf5-073e-45cc-9218-5caceefea0c4",
+      "path": "inventory-item-registration",
+      "title": "Inventory Item Registration",
+      "is_initial": true,
+      "auto_start": false,
+      "allow_restart": false,
+      "end_message": null,
+      "start_message": null,
+      "error_message": null,
+      "welcome_title": null,
+      "timeout_message": null,
+      "start_button_text": null,
+      "restart_button_text": null,
+      "file": "inventory_item_registration.py",
+      "workflow_position": [
+        168.0,
+        120.0
+      ],
+      "transitions": [
+        {
+          "target_id": "178da576-1148-4d54-a936-cbd392e00441",
+          "target_type": "scripts",
+          "type": "forms:finished",
+          "id": "6ego69f",
+          "condition_value": null
+        }
+      ],
+      "notification_trigger": {
+        "variable_name": "assignee_emails",
+        "enabled": false
+      },
+      "access_control": {
+        "is_public": false,
+        "required_roles": []
+      }
+    },
+    {
+      "id": "b9531eb6-d8e8-496f-8122-1c69bfba2b52",
+      "path": "equipment-loan",
+      "title": "Equipment Loan",
+      "is_initial": true,
+      "auto_start": false,
+      "allow_restart": false,
+      "end_message": null,
+      "start_message": null,
+      "error_message": null,
+      "welcome_title": null,
+      "timeout_message": null,
+      "start_button_text": null,
+      "restart_button_text": null,
+      "file": "equipment_loan.py",
+      "workflow_position": [
+        132.0,
+        216.0
+      ],
+      "transitions": [
+        {
+          "target_id": "3ca034e1-f701-4356-8aca-618506dad392",
+          "target_type": "scripts",
+          "type": "forms:finished",
+          "id": "0ax7wo8",
+          "condition_value": null
+        }
+      ],
+      "notification_trigger": {
+        "variable_name": "assignee_emails",
+        "enabled": false
+      },
+      "access_control": {
+        "is_public": false,
+        "required_roles": []
+      }
+    },
+    {
+      "id": "8ba442b5-b6be-4c44-8ce1-62b2cc2ad0d4",
+      "path": "equipment-loan-return",
+      "title": "Equipment Loan Return",
+      "is_initial": true,
+      "auto_start": false,
+      "allow_restart": false,
+      "end_message": null,
+      "start_message": null,
+      "error_message": null,
+      "welcome_title": null,
+      "timeout_message": null,
+      "start_button_text": null,
+      "restart_button_text": null,
+      "file": "equipment_loan_return.py",
+      "workflow_position": [
+        156.0,
+        312.0
+      ],
+      "transitions": [],
+      "notification_trigger": {
+        "variable_name": "assignee_emails",
+        "enabled": false
+      },
+      "access_control": {
+        "is_public": false,
+        "required_roles": []
+      }
+    }
+  ],
+  "scripts": [
+    {
+      "id": "178da576-1148-4d54-a936-cbd392e00441",
+      "file": "inventory_item_registration_data_processing.py",
+      "title": "Inventory Item Registration - Data Processing",
+      "is_initial": false,
+      "workflow_position": [
+        636.0,
+        120.0
+      ],
+      "transitions": []
+    },
+    {
+      "id": "3ca034e1-f701-4356-8aca-618506dad392",
+      "file": "generate_liability_statement.py",
+      "title": "Generate Liability Statement",
+      "is_initial": false,
+      "workflow_position": [
+        492.0,
+        216.0
+      ],
+      "transitions": [
+        {
+          "target_id": "4e962bea-c636-4f8b-b84d-c9f56c4c633e",
+          "target_type": "scripts",
+          "type": "scripts:finished",
+          "id": "6r68fub",
+          "condition_value": null
+        }
+      ]
+    },
+    {
+      "id": "4e962bea-c636-4f8b-b84d-c9f56c4c633e",
+      "file": "sending_equipment_loan_to_sign.py",
+      "title": "Sending Equipment Loan to Sign",
+      "is_initial": false,
+      "workflow_position": [
+        900.0,
+        216.0
+      ],
+      "transitions": []
+    }
+  ],
+  "iterators": [],
+  "conditions": [],
+  "version": "11.0"
+}

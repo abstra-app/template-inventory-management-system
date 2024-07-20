@@ -40,20 +40,6 @@ To use this project, some initial configurations are necessary:
 
 5. **Database Configuration**: Set up your database tables in Abstra Cloud Tables according to the schema defined in the [Database Schema](#database-schema) section of this document. Ensure each table is correctly configured to match the application's data structure requirements. For guidance on creating and managing tables in Abstra, refer to the [Abstra Tables documentation](https://docs.abstra.io/cloud/tables).
 
-## Dependencies
-
-To install the necessary dependencies for this project, a `requirements.txt` file is provided. This file includes all the required libraries.
-
-Follow these steps to install the dependencies:
-
-1. Ensure Python version 3.9 or higher is installed on your system.
-2. Open your terminal and navigate to the project directory.
-3. Run the following command to install the dependencies from `requirements.txt`:
-
-   ```sh
-   pip install -r requirements.txt
-   ```
-
 ## Database Schema
 
 The project involves the use of seven different tables within the database. Below are the schemas for each table:
@@ -104,21 +90,6 @@ The project involves the use of seven different tables within the database. Belo
 - `address`: String, the address of the team member.
 - `email`: String, the email address of the team member.
 
-## Usage
-
-After completing the initial setup, follow the steps below to start using the project:
-
-1. Install the necessary dependencies using pip:
-
-   ```sh
-   pip install -r requirements.txt
-   ```
-
-2. Open the project in Abstra using the following command:
-   ```sh
-   abstra editor path/to/your/project/folder/
-   ```
-
 ## General Workflows
 
 To interact with the inventory system (add, update, delete items), process expenses, and manage equipment loans, use the following scripts:
@@ -152,7 +123,7 @@ For calculating the monthly depreciation of all equipment, use:
 
 ## How It Works
 
-This project facilitates inventory management, expense processing, and equipment loan handling through automated processes. It leverages the `abstra` library for database operations and integrates with Google Drive for document management.
+This project facilitates inventory management, expense processing, and equipment loan handling through automated processes.
 
 ## Contributions
 

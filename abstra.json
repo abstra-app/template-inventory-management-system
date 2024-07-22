@@ -29,13 +29,27 @@
       "title": "Depreciation Calculation",
       "schedule": "0 3 1 * *",
       "workflow_position": [
-        156.0,
-        408.0
+        408,
+        312
       ],
       "transitions": []
     }
   ],
-  "hooks": [],
+  "hooks": [
+    {
+      "id": "02f468bd-5e2e-43cc-8242-cea8e38b30db",
+      "file": "contract_signing_completed.py",
+      "path": "new-hook-ztgd8tz",
+      "title": "Contract Signing Completed",
+      "enabled": true,
+      "workflow_position": [
+        660,
+        312
+      ],
+      "is_initial": true,
+      "transitions": []
+    }
+  ],
   "forms": [
     {
       "id": "34dfccf5-073e-45cc-9218-5caceefea0c4",
@@ -53,8 +67,8 @@
       "restart_button_text": null,
       "file": "inventory_item_registration.py",
       "workflow_position": [
-        168.0,
-        120.0
+        168,
+        120
       ],
       "transitions": [
         {
@@ -90,8 +104,8 @@
       "restart_button_text": null,
       "file": "equipment_loan.py",
       "workflow_position": [
-        132.0,
-        216.0
+        132,
+        216
       ],
       "transitions": [
         {
@@ -127,8 +141,8 @@
       "restart_button_text": null,
       "file": "equipment_loan_return.py",
       "workflow_position": [
-        156.0,
-        312.0
+        156,
+        312
       ],
       "transitions": [],
       "notification_trigger": {
@@ -148,8 +162,8 @@
       "title": "Inventory Item Registration - Data Processing",
       "is_initial": false,
       "workflow_position": [
-        636.0,
-        120.0
+        636,
+        120
       ],
       "transitions": []
     },
@@ -159,8 +173,8 @@
       "title": "Generate Liability Statement",
       "is_initial": false,
       "workflow_position": [
-        492.0,
-        216.0
+        492,
+        216
       ],
       "transitions": [
         {
@@ -178,8 +192,8 @@
       "title": "Sending Equipment Loan to Sign",
       "is_initial": false,
       "workflow_position": [
-        900.0,
-        216.0
+        900,
+        216
       ],
       "transitions": []
     }

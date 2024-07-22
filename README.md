@@ -25,6 +25,8 @@ To use this project, some initial configurations are necessary:
    GOOGLE_APPLICATION_CREDENTIALS="./path/to/your/service-account-file.json"
    ADM_CLICKSIGN_KEY="your_admin_signer_clicksign_key"
    CLICKSIGN_TOKEN="your_clicksign_key"
+   CLICKSIGN_WEBHOOK_SECRET="your_webhook_secret"
+   GOOGLE_DRIVE_EQUIPMENTS_CONTRACTS_DOCUMENT_FOLDER="your_google_drive_signed_contract_folder_id"
    ```
 
 4. **Dependencies**: To install the necessary dependencies for this project, a `requirements.txt` file is provided. This file includes all the required libraries.

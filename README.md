@@ -123,6 +123,12 @@ For calculating the monthly depreciation of all equipment, use:
 
 - **depreciation_calculation.py**: Script to calculate monthly depreciation.
 
+### Handling Signed Liability Statements
+
+For processing and handling the signed liability statements received via webhooks, use:
+
+- **process_signed_liability_statement.py**: Script download and upload signed liability statements to Google Drive.
+
 ## How It Works
 
 This project facilitates inventory management, expense processing, and equipment loan handling through automated processes.

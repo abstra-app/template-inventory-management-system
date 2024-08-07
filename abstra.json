@@ -4,6 +4,7 @@
     "name": "Untitled Workspace",
     "theme": null,
     "logo_url": null,
+    "favicon_url": null,
     "brand_name": null,
     "main_color": "#6200EE",
     "font_color": null,
@@ -39,7 +40,7 @@
     {
       "id": "02f468bd-5e2e-43cc-8242-cea8e38b30db",
       "file": "contract_signing_completed.py",
-      "path": "new-hook-ztgd8tz",
+      "path": "signed-contract",
       "title": "Contract Signing Completed",
       "enabled": true,
       "workflow_position": [
@@ -113,6 +114,13 @@
           "target_type": "scripts",
           "type": "forms:finished",
           "id": "0ax7wo8",
+          "condition_value": null
+        },
+        {
+          "target_id": "f7b38353-39af-4cf5-9e9e-b35d79daefbb",
+          "target_type": "scripts",
+          "type": "forms:finished",
+          "id": "r2q7qfk",
           "condition_value": null
         }
       ],
@@ -194,6 +202,17 @@
       "workflow_position": [
         900,
         216
+      ],
+      "transitions": []
+    },
+    {
+      "id": "f7b38353-39af-4cf5-9e9e-b35d79daefbb",
+      "file": "teste.py",
+      "title": "teste",
+      "is_initial": false,
+      "workflow_position": [
+        -96,
+        324
       ],
       "transitions": []
     }

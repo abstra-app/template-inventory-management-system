@@ -1,6 +1,6 @@
 # Inventory Management System
 
-This project includes an inventory management system implemented with Abstra and Python scripts. The system's capabilities include adding, updating, and deleting inventory items, processing expenses, and managing equipment loans. The system integrates with ClickSign for document signing and makes use of a custom `google_utils` module for uploading data to Google Drive.
+This project includes an inventory management system implemented with Abstra and Python scripts. The system's capabilities include adding, updating, and deleting inventory items, processing expenses, and managing equipment loans. The system integrates with Docusign for document signing and makes use of a custom `google_utils` module for uploading data to Google Drive.
 
 ## Initial Configuration
 
@@ -24,9 +24,15 @@ To use this project, some initial configurations are necessary:
 
    - `GOOGLE_DRIVE_INVOICES_FOLDER`: Your Google Drive folder ID for invoices.
    - `GOOGLE_APPLICATION_CREDENTIALS`: Path to your Google service account JSON file.
-   - `ADM_CLICKSIGN_KEY`: Your admin signer Clicksign key.
-   - `CLICKSIGN_TOKEN`: Your Clicksign API key.
-   - `CLICKSIGN_WEBHOOK_SECRET`: Your Clicksign webhook secret.
+   - `DOCUSIGN_WEBHOOK_SECRET`: Secret key for DocuSign webhook verification.
+   - `DOCUSIGN_CLIENT_ID`: Client ID for DocuSign API.
+   - `DOCUSIGN_CLIENT_SECRET`: Client secret for DocuSign API.
+   - `DOCUSIGN_ACCESS_TOKEN`: Access token for DocuSign API.
+   - `COMPANY_SIGNER_NAME`: Name of the company signer
+   - `COMPANY_SIGNER_EMAIL`: Email of the company signer
+   - `DOCUSIGN_API_ID`: API ID for DocuSign
+   - `DOCUSIGN_AUTH_SERVER`: Authentication server URL for DocuSign
+   - `API_BASE_PATH`: Base path for the DocuSign API
    - `GOOGLE_DRIVE_EQUIPMENTS_CONTRACTS_DOCUMENT_FOLDER`: Your Google Drive folder ID for signed contracts.
 
    For local development, create a `.env` file at the root of the project and add the variables listed above. For online deployment, configure these variables in your [environment settings](https://docs.abstra.io/cloud/envvars).

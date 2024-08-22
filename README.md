@@ -11,6 +11,10 @@ Integrations:
 
 To customize this template for your team and build a lot more, [book a demonstration here](https://meet.abstra.app/demo?url=template-inventory-management-system).
 
+
+![An inventory management system workflow built using Abstra](https://github.com/user-attachments/assets/884b687f-b754-46ff-b651-0f190c7ea5d3)
+
+
 ## Initial Configuration
 
 To use this project, some initial configurations are necessary:

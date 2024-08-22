@@ -115,13 +115,6 @@
           "type": "forms:finished",
           "id": "0ax7wo8",
           "condition_value": null
-        },
-        {
-          "target_id": "f7b38353-39af-4cf5-9e9e-b35d79daefbb",
-          "target_type": "scripts",
-          "type": "forms:finished",
-          "id": "r2q7qfk",
-          "condition_value": null
         }
       ],
       "notification_trigger": {
@@ -202,17 +195,6 @@
       "workflow_position": [
         900,
         216
-      ],
-      "transitions": []
-    },
-    {
-      "id": "f7b38353-39af-4cf5-9e9e-b35d79daefbb",
-      "file": "teste.py",
-      "title": "teste",
-      "is_initial": false,
-      "workflow_position": [
-        -96,
-        324
       ],
       "transitions": []
     }

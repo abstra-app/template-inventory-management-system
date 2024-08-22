@@ -1,29 +1,26 @@
 # Inventory Management System
 
+## How It Works
+
 This project includes an inventory management system implemented with Abstra and Python scripts. The system's capabilities include adding, updating, and deleting inventory items, processing expenses, and managing equipment loans. The system integrates with Docusign for document signing and makes use of a custom `google_utils` module for uploading data to Google Drive.
+
+Integrations:
+
+- Docusign
+- Google drive
+
+To customize this template for your team and build a lot more, [book a demonstration here](https://meet.abstra.app/demo?url=template-inventory-management-system).
 
 ## Initial Configuration
 
 To use this project, some initial configurations are necessary:
 
 1. **Python Version**: Ensure Python version 3.9 or higher is installed on your system.
-2. **Service Account Credentials**: Obtain the service account credentials as follows:
+2. **Integrations**: To connect to Google Drive, this template uses Abstra connectors. To connect, simply open your project in [Abstra Cloud Console](https://cloud.abstra.io/projects/), add the Google Drive connector, and authorize it.
 
-   1. Access the [Google Cloud Console](https://console.cloud.google.com/).
-   2. Navigate to the **IAM & Admin** section.
-   3. Select **Service Accounts**.
-   4. Create a new service account or select an existing one.
-   5. Generate a new key.
-   6. Download the JSON file containing the credentials.
-
-   These credentials are used to authenticate and authorize requests to Google APIs. Save this JSON file to a secure location in your project directory, for example: `./path/to/your/service-account-file.json`
-
-3. **Environment Variables**
-
-   The following environment variables are required for both local development and online deployment:
+3. **Environment Variables**: The following environment variables are required for both local development and online deployment:
 
    - `GOOGLE_DRIVE_INVOICES_FOLDER`: Your Google Drive folder ID for invoices.
-   - `GOOGLE_APPLICATION_CREDENTIALS`: Path to your Google service account JSON file.
    - `DOCUSIGN_WEBHOOK_SECRET`: Secret key for DocuSign webhook verification.
    - `DOCUSIGN_CLIENT_ID`: Client ID for DocuSign API.
    - `DOCUSIGN_CLIENT_SECRET`: Client secret for DocuSign API.
@@ -35,10 +32,9 @@ To use this project, some initial configurations are necessary:
    - `API_BASE_PATH`: Base path for the DocuSign API
    - `GOOGLE_DRIVE_EQUIPMENTS_CONTRACTS_DOCUMENT_FOLDER`: Your Google Drive folder ID for signed contracts.
 
-   For local development, create a `.env` file at the root of the project and add the variables listed above. For online deployment, configure these variables in your [environment settings](https://docs.abstra.io/cloud/envvars).
+   For local development, create a `.env` file at the root of the project and add the variables listed above (refer to `.env.examples`). For online deployment, configure these variables in your [environment settings](https://docs.abstra.io/cloud/envvars).
 
-
-5. **Dependencies**: To install the necessary dependencies for this project, a `requirements.txt` file is provided. This file includes all the required libraries.
+4. **Dependencies**: To install the necessary dependencies for this project, a `requirements.txt` file is provided. This file includes all the required libraries.
 
    Follow these steps to install the dependencies:
 
@@ -49,53 +45,18 @@ To use this project, some initial configurations are necessary:
       pip install -r requirements.txt
       ```
 
-6. **Database Configuration**: Set up your database tables in Abstra Cloud Tables according to the schema defined in the [Database Schema](#database-schema) section of this document. Ensure each table is correctly configured to match the application's data structure requirements. For guidance on creating and managing tables in Abstra, refer to the [Abstra Tables documentation](https://docs.abstra.io/cloud/tables).
+5. **Database Configuration**: Set up your database tables in Abstra Cloud Tables according to the schema defined in `abstra-tables.json`.
 
-## Database Schema
+   To automatically create the table schema, follow these steps:
 
-The project involves the use of seven different tables within the database. Below are the schemas for each table:
+   1. Open your terminal and navigate to the project directory.
 
-#### 1. Depreciation
+   2. Run the following command to install the table schema from `abstra-tables.json`:
+      ```sh
+      abstra restore
+      ```
 
-  | useful_life_months |  equipment_category | residual_value_percentage |
-  | :-: | :-: | :-: |
-  | ```int``` | ```str``` | ```float``` |
-
-#### 2. Equipments
-
-  | description | serial_number | model | brand |
-  | :-: | :-: | :-: | :-: |
-  | ```str``` | ```str``` | ```str``` | ```str``` |
-
-#### 3. Inventory Allocations
-
-  | equipment_id | user_id | start_date | end_date | status |
-  | :-: | :-: | :-: | :-: | :-: |
-  | ```UUID``` | ```UUID``` | ```date``` | ```date``` | ```str``` |
-
-#### 4. Inventory Expenses
-
-  | amount | invoice_number | supplier_id | is_cash_expense |
-  | :-: | :-: | :-: | :-: |
-  | ```int``` | ```str``` | ```UUID``` | ```bool``` |
-
-#### 5. Inventory Transactions
-
-  | equipment_id | transaction_type |
-  | :-: | :-: |
-  | ```UUID``` | ```str``` |
-
-#### 6. Suppliers
-
-  | name | contact_email |
-  | :-: | :-: |
-  | ```str``` | ```str``` |
-
-#### 7. Team
-
-  | name | email |
-  | :-: | :-: |
-  | ```str``` | ```str``` |
+   For guidance on creating and managing tables in Abstra, refer to the [Abstra Tables documentation](https://docs.abstra.io/cloud/tables).
 
 ## General Workflows
 
@@ -134,10 +95,4 @@ For processing and handling the signed liability statements received via webhook
 
 - **process_signed_liability_statement.py**: Script to download and upload signed liability statements to Google Drive.
 
-## How It Works
-
-This project facilitates inventory management, expense processing, and equipment loan handling through automated processes.
-
-## Contributions
-
-Contributions are welcome! If you wish to improve this project, feel free to create a pull request.
+If you're interested in customizing this template for your team in under 30 minutes, [book a customization session here.](https://meet.abstra.app/demo?url=template-inventory-management-system)

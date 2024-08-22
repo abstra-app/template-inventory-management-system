@@ -1,8 +1,7 @@
 
-import pandas as pd
+from abstra.connectors import get_gdrive_credentials
 import os
 
-import google.auth
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 from googleapiclient.http import MediaFileUpload
@@ -13,7 +12,7 @@ def upload_to_folder(folder_id, filepath):
     Args: Id of the folder
     Returns: ID of the file uploaded
     """
-    creds, _ = google.auth.default()
+    creds = get_gdrive_credentials()
 
     filename = os.path.basename(filepath)
 

@@ -1,4 +1,4 @@
-abstra==2.23.0
+abstra==2.25.4
 pandas
 google-api-python-client
 python-dateutil
@@ -6,4 +6,4 @@ docxtpl
 python-docx
 requests
 python-dotenv
-docusign-esign==4.0.0
+docusign-esign

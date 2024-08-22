@@ -1,0 +1,426 @@
+{
+  "tables": [
+    {
+      "id": "379cca82-2ba8-4201-9956-0a7b3c7fe37d",
+      "name": "depreciation",
+      "columns": [
+        {
+          "id": "b67297b5-6d23-4d69-9d0e-16d2325bfe45",
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "unique": true,
+          "primaryKey": true,
+          "default": "gen_random_uuid()"
+        },
+        {
+          "id": "254707b4-07a9-428d-ade7-a52cb1df04a3",
+          "name": "created_at",
+          "type": "timestamp",
+          "nullable": false,
+          "unique": false,
+          "primaryKey": false,
+          "default": "now()"
+        },
+        {
+          "id": "ae0bf0e5-aec9-4461-a0ff-c1390fe2b50a",
+          "name": "useful_life_months",
+          "type": "int4",
+          "nullable": false,
+          "unique": false,
+          "primaryKey": false
+        },
+        {
+          "id": "e94c76f8-99b0-4bb9-9dfb-164eba86db34",
+          "name": "equipment_category",
+          "type": "varchar",
+          "nullable": false,
+          "unique": false,
+          "primaryKey": false
+        },
+        {
+          "id": "cc234332-a4c2-4968-ac2a-57a07924b1ff",
+          "name": "residual_value_percentage",
+          "type": "int4",
+          "nullable": false,
+          "unique": false,
+          "primaryKey": false
+        }
+      ],
+      "data": []
+    },
+    {
+      "id": "e6fe8b5f-e591-4a0f-bd4f-475da8ba920e",
+      "name": "equipments",
+      "columns": [
+        {
+          "id": "1596fe65-d6ca-4444-b501-d76337391853",
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "unique": true,
+          "primaryKey": true,
+          "default": "gen_random_uuid()"
+        },
+        {
+          "id": "674b55c0-839a-4a32-b5a0-ce70091bd0dc",
+          "name": "created_at",
+          "type": "timestamp",
+          "nullable": false,
+          "unique": false,
+          "primaryKey": false,
+          "default": "now()"
+        },
+        {
+          "id": "3d441d04-2294-4cc6-9c9e-f119ad0de422",
+          "name": "description",
+          "type": "varchar",
+          "nullable": false,
+          "unique": false,
+          "primaryKey": false
+        },
+        {
+          "id": "15f39762-60f6-4a5a-a788-0c6193d41207",
+          "name": "serial_number",
+          "type": "varchar",
+          "nullable": true,
+          "unique": false,
+          "primaryKey": false
+        },
+        {
+          "id": "9c8ab180-acce-48e5-a764-7b42a25a217f",
+          "name": "model",
+          "type": "varchar",
+          "nullable": true,
+          "unique": false,
+          "primaryKey": false
+        },
+        {
+          "id": "6eb1b99f-d96e-4ed4-b486-3eaa35250c3a",
+          "name": "brand",
+          "type": "varchar",
+          "nullable": true,
+          "unique": false,
+          "primaryKey": false
+        },
+        {
+          "id": "f53889f4-981c-4f72-b684-75873644b2c2",
+          "name": "depreciation_id",
+          "type": "uuid",
+          "nullable": false,
+          "unique": false,
+          "primaryKey": false,
+          "foreignKey": {
+            "columnId": "b67297b5-6d23-4d69-9d0e-16d2325bfe45"
+          }
+        },
+        {
+          "id": "273133e9-ff0c-4f61-a73e-ded418622c6e",
+          "name": "expense_id",
+          "type": "uuid",
+          "nullable": false,
+          "unique": false,
+          "primaryKey": false,
+          "foreignKey": {
+            "columnId": "2f8a9e7a-0140-4f49-bd51-71cb809bae47"
+          }
+        },
+        {
+          "id": "42987dd3-ba76-4d21-94bb-064c5f1250cb",
+          "name": "status",
+          "type": "varchar",
+          "nullable": true,
+          "unique": false,
+          "primaryKey": false,
+          "default": "'active'::character varying"
+        }
+      ],
+      "data": []
+    },
+    {
+      "id": "c7add4de-be0f-4174-9461-1529a752db6e",
+      "name": "inventory_allocations",
+      "columns": [
+        {
+          "id": "61a60e03-7591-4df4-b372-6b42a9345610",
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "unique": true,
+          "primaryKey": true,
+          "default": "gen_random_uuid()"
+        },
+        {
+          "id": "17c6a715-f388-4c69-99ad-ea85ede6e18e",
+          "name": "created_at",
+          "type": "timestamp",
+          "nullable": false,
+          "unique": false,
+          "primaryKey": false,
+          "default": "now()"
+        },
+        {
+          "id": "9557db9f-9c5d-4ac9-90db-b661f31cb314",
+          "name": "equipment_id",
+          "type": "uuid",
+          "nullable": false,
+          "unique": false,
+          "primaryKey": false,
+          "foreignKey": {
+            "columnId": "1596fe65-d6ca-4444-b501-d76337391853"
+          }
+        },
+        {
+          "id": "12179363-5f2a-434e-a8e7-25ee7e5ef248",
+          "name": "user_id",
+          "type": "uuid",
+          "nullable": false,
+          "unique": false,
+          "primaryKey": false,
+          "foreignKey": {
+            "columnId": "2aaeee27-f8d1-423a-94b8-6c47b855b46d"
+          }
+        },
+        {
+          "id": "6d5746f6-3a5b-4003-9f8a-6fa8b1d058f7",
+          "name": "start_date",
+          "type": "date",
+          "nullable": false,
+          "unique": false,
+          "primaryKey": false,
+          "default": "now()"
+        },
+        {
+          "id": "6961e231-e8dc-4677-8172-16b4cf97513c",
+          "name": "end_date",
+          "type": "date",
+          "nullable": true,
+          "unique": false,
+          "primaryKey": false
+        },
+        {
+          "id": "1f849501-f472-4f47-b1f5-4fb3b090b102",
+          "name": "status",
+          "type": "varchar",
+          "nullable": true,
+          "unique": false,
+          "primaryKey": false
+        }
+      ],
+      "data": []
+    },
+    {
+      "id": "5a6a7948-409f-4fce-bf2d-cd73eda0bcf0",
+      "name": "inventory_expenses",
+      "columns": [
+        {
+          "id": "2f8a9e7a-0140-4f49-bd51-71cb809bae47",
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "unique": true,
+          "primaryKey": true,
+          "default": "gen_random_uuid()"
+        },
+        {
+          "id": "eff72ac1-632c-4f92-81c4-6bace99e5a1d",
+          "name": "created_at",
+          "type": "timestamp",
+          "nullable": false,
+          "unique": false,
+          "primaryKey": false,
+          "default": "now()"
+        },
+        {
+          "id": "d9c6f324-675d-4aaf-897f-a2e0a07e0a69",
+          "name": "amount",
+          "type": "int4",
+          "nullable": false,
+          "unique": false,
+          "primaryKey": false
+        },
+        {
+          "id": "3562a495-64ca-41d6-a669-64f975048f5d",
+          "name": "invoice_number",
+          "type": "varchar",
+          "nullable": true,
+          "unique": false,
+          "primaryKey": false
+        },
+        {
+          "id": "83dcd191-e814-4b64-b522-c4d4d7d0b53a",
+          "name": "supplier_id",
+          "type": "uuid",
+          "nullable": true,
+          "unique": false,
+          "primaryKey": false,
+          "foreignKey": {
+            "columnId": "b054b1ac-bdf0-4ee7-9cdd-e27c0fa98ece"
+          }
+        },
+        {
+          "id": "9e3fc0a2-d6d7-487e-9074-b83cb0eac544",
+          "name": "is_cash_expense",
+          "type": "bool",
+          "nullable": false,
+          "unique": false,
+          "primaryKey": false,
+          "default": "true"
+        }
+      ],
+      "data": []
+    },
+    {
+      "id": "5c920df0-f40d-4aed-8efa-b35a1071d123",
+      "name": "inventory_transactions",
+      "columns": [
+        {
+          "id": "2c7311fc-587c-45b5-9d42-08612dcddec3",
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "unique": true,
+          "primaryKey": true,
+          "default": "gen_random_uuid()"
+        },
+        {
+          "id": "cfb661f6-b7c0-495a-a2ba-a86d7d5943e2",
+          "name": "created_at",
+          "type": "timestamp",
+          "nullable": false,
+          "unique": false,
+          "primaryKey": false,
+          "default": "now()"
+        },
+        {
+          "id": "01277145-6b3c-46e1-a595-6254da7eda70",
+          "name": "equipment_id",
+          "type": "uuid",
+          "nullable": false,
+          "unique": false,
+          "primaryKey": false,
+          "foreignKey": {
+            "columnId": "1596fe65-d6ca-4444-b501-d76337391853"
+          }
+        },
+        {
+          "id": "bfbcd72f-ea35-4284-a371-21f8e296c9ca",
+          "name": "transaction_type",
+          "type": "varchar",
+          "nullable": false,
+          "unique": false,
+          "primaryKey": false
+        }
+      ],
+      "data": []
+    },
+    {
+      "id": "48f1c5d7-2344-42b8-9145-5958c39ec716",
+      "name": "suppliers",
+      "columns": [
+        {
+          "id": "b054b1ac-bdf0-4ee7-9cdd-e27c0fa98ece",
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "unique": true,
+          "primaryKey": true,
+          "default": "gen_random_uuid()"
+        },
+        {
+          "id": "f7ac24dc-c6cc-4beb-9133-9371839fd953",
+          "name": "created_at",
+          "type": "timestamp",
+          "nullable": false,
+          "unique": false,
+          "primaryKey": false,
+          "default": "now()"
+        },
+        {
+          "id": "e149c4b0-911e-46ac-91f7-57379d6a36a1",
+          "name": "name",
+          "type": "varchar",
+          "nullable": false,
+          "unique": false,
+          "primaryKey": false
+        },
+        {
+          "id": "f5f20f20-62dd-42fa-9cdc-44e5f0edd070",
+          "name": "contact_email",
+          "type": "varchar",
+          "nullable": true,
+          "unique": false,
+          "primaryKey": false
+        }
+      ],
+      "data": []
+    },
+    {
+      "id": "71ce9f44-ab3b-40df-ac61-12c292a3956c",
+      "name": "team",
+      "columns": [
+        {
+          "id": "2aaeee27-f8d1-423a-94b8-6c47b855b46d",
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "unique": true,
+          "primaryKey": true,
+          "default": "gen_random_uuid()"
+        },
+        {
+          "id": "4aa8e99b-26b2-4d1c-a9e7-affc7adfc123",
+          "name": "created_at",
+          "type": "timestamp",
+          "nullable": false,
+          "unique": false,
+          "primaryKey": false,
+          "default": "now()"
+        },
+        {
+          "id": "5358b91d-468f-498d-b61d-7719e331f347",
+          "name": "name",
+          "type": "varchar",
+          "nullable": false,
+          "unique": false,
+          "primaryKey": false
+        },
+        {
+          "id": "5d16c29e-6a39-478c-a2fa-c5c7d5ffe347",
+          "name": "department",
+          "type": "varchar",
+          "nullable": false,
+          "unique": false,
+          "primaryKey": false
+        },
+        {
+          "id": "5a282f29-4f27-41db-80ec-c42012fd5b06",
+          "name": "role",
+          "type": "varchar",
+          "nullable": false,
+          "unique": false,
+          "primaryKey": false
+        },
+        {
+          "id": "dd59293c-5335-4df5-8096-53c2a15ba808",
+          "name": "address",
+          "type": "varchar",
+          "nullable": true,
+          "unique": false,
+          "primaryKey": false,
+          "default": "'New York, Street'::character varying"
+        },
+        {
+          "id": "f9dc9e3d-4e8c-4d2a-a729-507d4d223bbc",
+          "name": "email",
+          "type": "varchar",
+          "nullable": true,
+          "unique": false,
+          "primaryKey": false,
+          "default": "'test@test.com'::character varying"
+        }
+      ],
+      "data": []
+    }
+  ]
+}

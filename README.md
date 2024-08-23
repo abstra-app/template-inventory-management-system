@@ -43,6 +43,8 @@ To use this project, some initial configurations are necessary:
       ```sh
       pip install -r requirements.txt
       ```
+   3. Install Pandoc. To test it locally, you need to install Pandoc. You can do this through various package managers depending on your operating system. Detailed installation instructions are available in the [Pandoc documentation](https://pandoc.org/installing.html).
+      
 
 5. **Access Control**: The generated form is protected by default. For local testing, no additional configuration is necessary. However, for cloud usage, you need to add your own access rules. For more information on how to configure access control, refer to the [Abstra access control documentation](https://docs.abstra.io/concepts/access-control).
 

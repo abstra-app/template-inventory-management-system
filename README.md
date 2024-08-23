@@ -8,27 +8,22 @@ Integrations:
 
 - Docusign
 - Google drive
+- Pandoc
 
 To customize this template for your team and build a lot more, [book a demonstration here](https://meet.abstra.app/demo?url=template-inventory-management-system).
 
-
 ![An inventory management system workflow built using Abstra](https://github.com/user-attachments/assets/884b687f-b754-46ff-b651-0f190c7ea5d3)
-
 
 ## Initial Configuration
 
 To use this project, some initial configurations are necessary:
 
 1. **Python Version**: Ensure Python version 3.9 or higher is installed on your system.
-2. **Integrations**: To connect to Google Drive, this template uses Abstra connectors. To connect, simply open your project in [Abstra Cloud Console](https://cloud.abstra.io/projects/), add the Google Drive connector, and authorize it.
-
+2. **Integrations**: To connect to Google Drive and DocuSign, this template uses Abstra connectors. To connect, simply open your project in [Abstra Cloud Console](https://cloud.abstra.io/projects/), add the Google Drive and DocuSign connectors, and authorize them.
 3. **Environment Variables**: The following environment variables are required for both local development and online deployment:
 
    - `GOOGLE_DRIVE_INVOICES_FOLDER`: Your Google Drive folder ID for invoices.
    - `DOCUSIGN_WEBHOOK_SECRET`: Secret key for DocuSign webhook verification.
-   - `DOCUSIGN_CLIENT_ID`: Client ID for DocuSign API.
-   - `DOCUSIGN_CLIENT_SECRET`: Client secret for DocuSign API.
-   - `DOCUSIGN_ACCESS_TOKEN`: Access token for DocuSign API.
    - `COMPANY_SIGNER_NAME`: Name of the company signer
    - `COMPANY_SIGNER_EMAIL`: Email of the company signer
    - `DOCUSIGN_API_ID`: API ID for DocuSign
@@ -54,8 +49,8 @@ To use this project, some initial configurations are necessary:
    To automatically create the table schema, follow these steps:
 
    1. Open your terminal and navigate to the project directory.
-
    2. Run the following command to install the table schema from `abstra-tables.json`:
+
       ```sh
       abstra restore
       ```

@@ -1,6 +1,7 @@
 from docusign_esign import ApiException, ApiClient, EnvelopesApi, Document, Signer, SignHere, Tabs, Recipients, EnvelopeDefinition
 import abstra.workflows as aw
 from abstra.common import get_persistent_dir
+from abstra.connectors import get_access_token
 import os
 import base64
 import dotenv
@@ -16,7 +17,7 @@ team_data = aw.get_data("team_data")
 name = team_data["team_name"]
 email = team_data["team_email"]
 
-ACCESS_TOKEN = os.getenv("DOCUSIGN_ACCESS_TOKEN")
+ACCESS_TOKEN = get_access_token("docusign").token
 DOCUSIGN_AUTH_SERVER = os.getenv('DOCUSIGN_AUTH_SERVER')
 API_BASE_PATH = os.getenv('API_BASE_PATH')
 ACCOUNT_ID = os.getenv("DOCUSIGN_API_ID")

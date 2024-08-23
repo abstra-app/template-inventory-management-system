@@ -7,3 +7,4 @@ python-docx
 requests
 python-dotenv
 docusign-esign
+pypandoc==1.13

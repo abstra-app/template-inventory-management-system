@@ -4,7 +4,7 @@ from docx import Document
 from docxtpl import DocxTemplate
 import abstra.workflows as aw
 from abstra.common import get_persistent_dir
-import subprocess
+import pypandoc
 import shutil
 
 persistent_dir = get_persistent_dir()
@@ -29,23 +29,39 @@ def create_new_doc_with_tags(context, template_path, output_path):
 
 
 def convert_with_pandoc(input_path):
-    pandoc_path = 'pandoc'
-    if not shutil.which(pandoc_path):
-        print(f"Error: Pandoc not found. Make sure Pandoc is installed and accessible through the PATH.")
-        return None
-
     try:
-        final_output_path = input_path.replace('.docx', '_converted.docx')
-        result = subprocess.run([pandoc_path, input_path, '-o', final_output_path],
-                                stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        if result.returncode != 0:
-            print("Error converting document with Pandoc:",
-                  result.stderr.decode())
+        # Check if Pandoc is installed on the system
+        if not shutil.which('pandoc'):
+            print(
+                "Error: Pandoc not found. Make sure Pandoc is installed and accessible through the PATH.")
             return None
-        print(f"Succesfully converted document: {final_output_path}")
+
+        # Check if the input file exists
+        if not os.path.isfile(input_path):
+            print(f"Error: Input file '{input_path}' does not exist.")
+            return None
+
+        final_output_path = input_path.replace('.docx', '_converted.docx')
+
+        # Try to convert the file using pypandoc
+        try:
+            pypandoc.convert_file(input_path, 'docx',
+                                  outputfile=final_output_path)
+        except RuntimeError as e:
+            print(f"Error converting document with Pandoc: {e}")
+            return None
+
+        # Check if the output file was created
+        if not os.path.isfile(final_output_path):
+            print(
+                f"Error: Conversion failed, output file not created: {final_output_path}")
+            return None
+
+        print(
+            f"Successfully converted and saved document: {final_output_path}")
         return final_output_path
     except Exception as e:
-        print(f"Error converting document with Pandoc: {e}")
+        print(f"Unexpected error during conversion: {e}")
         return None
 
 

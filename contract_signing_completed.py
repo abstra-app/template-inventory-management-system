@@ -1,5 +1,6 @@
 import abstra.hooks as ah
 from abstra.common import get_persistent_dir
+from abstra.connectors import get_access_token
 import os
 from datetime import datetime
 from uuid import uuid4
@@ -48,7 +49,7 @@ new_contract_folder = os.path.join(
     persistent_dir, "liability_statement_signed")
 os.makedirs(new_contract_folder, exist_ok=True)
 
-ACCESS_TOKEN = os.getenv("DOCUSIGN_ACCESS_TOKEN")
+ACCESS_TOKEN = get_access_token("docusign").token
 API_BASE_PATH = os.getenv('API_BASE_PATH', 'https://demo.docusign.net/restapi')
 DOCUSIGN_AUTH_SERVER = os.getenv(
     'DOCUSIGN_AUTH_SERVER', 'https://account-d.docusign.com')

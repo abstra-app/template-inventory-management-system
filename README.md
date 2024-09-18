@@ -31,7 +31,7 @@ To use this project, some initial configurations are necessary:
    - `API_BASE_PATH`: Base path for the DocuSign API
    - `GOOGLE_DRIVE_EQUIPMENTS_CONTRACTS_DOCUMENT_FOLDER`: Your Google Drive folder ID for signed contracts.
 
-   For local development, create a `.env` file at the root of the project and add the variables listed above (refer to `.env.examples`). For online deployment, configure these variables in your [environment settings](https://docs.abstra.io/cloud/envvars).
+   For local development, create a `.env` file at the root of the project and add the variables listed above (refer to `.env.example`). For online deployment, configure these variables in your [environment settings](https://docs.abstra.io/cloud/envvars).
 
 4. **Dependencies**: To install the necessary dependencies for this project, a `requirements.txt` file is provided. This file includes all the required libraries.
 

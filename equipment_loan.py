@@ -1,7 +1,9 @@
 import abstra.forms as af
 import abstra.tables as at
-import abstra.workflows as aw
+from abstra.tasks import send_task
 
+# setting empty payload to fill accordingly
+payload = {}
 
 def get_teams():
     return at.select("team")
@@ -38,16 +40,15 @@ if equipment_page.get("equipments"):
                       == equipment_page.get("equipments")][0]
     equipment_description = f"{equipment_data['description']} - serial number: {equipment_data['serial_number']}, model: {equipment_data['model']}, brand: {equipment_data['brand']}"
 
-    aw.set_data("team_data", {
+    payload["team_data"] = {
         "team_name": loaned_equipment_team_member["name"],
         "team_address": loaned_equipment_team_member["address"],
         "team_email": loaned_equipment_team_member["email"]
-    })
+    }
 
-    aw.set_data("equipment_description",
-                {
+    payload["equipment_description"] = {
                     "equipment_description": equipment_description
-                })
+                }
 
     formatted_date = equipment_page.get("loan_date").strftime('%Y-%m-%d')
     at.insert("inventory_allocations", {
@@ -60,3 +61,5 @@ if equipment_page.get("equipments"):
         "equipment_id": equipment_page.get("equipments"),
         "transaction_type": "loan"
     })
+
+send_task("loan_data", payload)

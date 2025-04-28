@@ -2,7 +2,7 @@ import os
 from datetime import datetime, date
 from docx import Document
 from docxtpl import DocxTemplate
-import abstra.workflows as aw
+from abstra.tasks import get_trigger_task, send_task
 from abstra.common import get_persistent_dir
 import pypandoc
 import shutil
@@ -82,9 +82,13 @@ contract_folder = f"{persistent_dir}/liability_statement"
 if not os.path.exists(contract_folder):
     os.makedirs(contract_folder)
 
+# Get the task and payload
+task = get_trigger_task()
+payload = task.get_payload()
 
-team_data = aw.get_data("team_data")
-equipment_description = aw.get_data("equipment_description")
+
+team_data = payload["team_data"]
+equipment_description = payload["equipment_description"]
 
 name = team_data["team_name"]
 address = team_data["team_address"]
@@ -114,4 +118,7 @@ contract = open(filepath, 'rb').read()
 output_filepath = generate_document(
     contract, name, contract_folder, contract_data)
 
-aw.set_data("output_filepath", output_filepath)
+payload["output_filepath"] = output_filepath
+
+send_task("liability_statement", payload)
+task.complete()

@@ -1,21 +1,14 @@
 {
   "workspace": {
-    "id": null,
     "name": "Untitled Workspace",
+    "language": "en",
     "theme": null,
     "logo_url": null,
     "favicon_url": null,
-    "brand_name": null,
+    "brand_name": "",
     "main_color": "#6200EE",
-    "font_color": null,
     "font_family": null,
-    "language": "en"
-  },
-  "kanban": {
-    "access_control": {
-      "is_public": true,
-      "required_roles": []
-    }
+    "font_color": null
   },
   "home": {
     "access_control": {
@@ -30,8 +23,8 @@
       "title": "Depreciation Calculation",
       "schedule": "0 3 1 * *",
       "workflow_position": [
-        408.0,
-        312.0
+        408,
+        312
       ],
       "transitions": []
     }
@@ -44,8 +37,8 @@
       "title": "Contract Signing Completed",
       "enabled": true,
       "workflow_position": [
-        660.0,
-        312.0
+        660,
+        312
       ],
       "is_initial": true,
       "transitions": []
@@ -68,16 +61,16 @@
       "restart_button_text": null,
       "file": "inventory_item_registration.py",
       "workflow_position": [
-        168.0,
-        120.0
+        168,
+        120
       ],
       "transitions": [
         {
           "target_id": "178da576-1148-4d54-a936-cbd392e00441",
           "target_type": "scripts",
-          "type": "forms:finished",
+          "type": "task",
           "id": "6ego69f",
-          "condition_value": null
+          "task_type": "registration_data"
         }
       ],
       "notification_trigger": {
@@ -105,16 +98,16 @@
       "restart_button_text": null,
       "file": "equipment_loan.py",
       "workflow_position": [
-        132.0,
-        216.0
+        132,
+        216
       ],
       "transitions": [
         {
           "target_id": "3ca034e1-f701-4356-8aca-618506dad392",
           "target_type": "scripts",
-          "type": "forms:finished",
+          "type": "task",
           "id": "0ax7wo8",
-          "condition_value": null
+          "task_type": "loan_data"
         }
       ],
       "notification_trigger": {
@@ -142,8 +135,8 @@
       "restart_button_text": null,
       "file": "equipment_loan_return.py",
       "workflow_position": [
-        156.0,
-        312.0
+        156,
+        312
       ],
       "transitions": [],
       "notification_trigger": {
@@ -163,8 +156,8 @@
       "title": "Inventory Item Registration - Data Processing",
       "is_initial": false,
       "workflow_position": [
-        636.0,
-        120.0
+        636,
+        120
       ],
       "transitions": []
     },
@@ -174,16 +167,16 @@
       "title": "Generate Liability Statement",
       "is_initial": false,
       "workflow_position": [
-        492.0,
-        216.0
+        450,
+        210
       ],
       "transitions": [
         {
           "target_id": "4e962bea-c636-4f8b-b84d-c9f56c4c633e",
           "target_type": "scripts",
-          "type": "scripts:finished",
+          "type": "task",
           "id": "6r68fub",
-          "condition_value": null
+          "task_type": "liability_statement"
         }
       ]
     },
@@ -193,13 +186,13 @@
       "title": "Sending Equipment Loan to Sign",
       "is_initial": false,
       "workflow_position": [
-        900.0,
-        216.0
+        900,
+        216
       ],
       "transitions": []
     }
   ],
-  "iterators": [],
-  "conditions": [],
-  "version": "11.0"
+  "agents": [],
+  "clients": [],
+  "version": "13.0"
 }

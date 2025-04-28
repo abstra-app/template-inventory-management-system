@@ -1,11 +1,13 @@
-import abstra.workflows as aw
+from abstra.tasks import get_trigger_task
 import abstra.tables as at
 from google_utils import upload_to_folder
 
 import os
 
-inventory = aw.get_data("inventory_data")
-equipment_loan_data = aw.get_data("equipment_loan_data")
+task = get_trigger_task()
+payload = task.get_payload()
+inventory = payload["inventory_data"]
+equipment_loan_data = payload["equipment_loan_data"]
 
 
 # Add the expense data to the database
@@ -48,3 +50,5 @@ if equipment_loan_data:
 folder_id = os.getenv("GOOGLE_DRIVE_INVOICES_FOLDER")
 invoice_filepath = inventory["invoice_path"]
 upload_to_folder(folder_id, invoice_filepath)
+
+task.complete()

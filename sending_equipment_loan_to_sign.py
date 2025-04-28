@@ -1,5 +1,5 @@
 from docusign_esign import ApiException, ApiClient, EnvelopesApi, Document, Signer, SignHere, Tabs, Recipients, EnvelopeDefinition
-import abstra.workflows as aw
+from abstra.tasks import get_trigger_task, send_task
 from abstra.common import get_persistent_dir
 from abstra.connectors import get_access_token
 import os
@@ -10,9 +10,13 @@ dotenv.load_dotenv()
 
 # Set initial variables
 persistent_dir = get_persistent_dir()
-filepath = aw.get_data("output_filepath")
 
-team_data = aw.get_data("team_data")
+task = get_trigger_task()
+payload = task.get_payload()
+
+filepath = payload["output_filepath"]
+
+team_data = payload["team_data"]
 
 name = team_data["team_name"]
 email = team_data["team_email"]
@@ -98,3 +102,5 @@ try:
     print(f"Envelope status: {results.status}")
 except ApiException as e:
     print(f"Exception when calling EnvelopesApi->create_envelope: {e}")
+
+task.complete()

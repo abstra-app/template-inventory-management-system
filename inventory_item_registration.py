@@ -1,5 +1,5 @@
 import abstra.forms as af
-import abstra.workflows as aw
+from abstra.tasks import send_task
 import abstra.tables as at
 from datetime import datetime
 
@@ -24,6 +24,8 @@ inventory_date = af.Page().display("Inventory Registration - Inventory data", si
 
 inventory = af.run_steps([expense_date, inventory_date])
 
+# setting empty payload to fill accordingly
+payload = {}
 
 if inventory["equipment_loan"]:
     team = [{"label": s["name"], "value": s["id"]} for s in at.select("team")]
@@ -33,15 +35,15 @@ if inventory["equipment_loan"]:
                                     .read_dropdown("Team member", team, key="team_member_id")\
                                     .run()
     
-    aw.set_data("equipment_loan_data", {
+    equipment_payload = {
         "team_member_id": equipment_loan_page["team_member_id"],
         "loan_start_date": datetime.strftime(equipment_loan_page["loan_start_date"], "%Y-%m-%d")
-    })
+    }
+    payload["equipment_loan_data"] = equipment_payload
 
 invoice_path = inventory["invoice"].file.name                        
 
-
-aw.set_data("inventory_data", {
+inventory_payload = {
     "amount": inventory["amount"],
     "invoice_number": inventory["invoice_number"],
     "expense_date": datetime.strftime(inventory["expense_date"], "%Y-%m-%d"),
@@ -52,5 +54,8 @@ aw.set_data("inventory_data", {
     "brand": inventory["brand"],
     "depreciation_id": inventory["depreciation_id"],
     "invoice_path": invoice_path
-})
+}
 
+payload["inventory_data"] = inventory_payload
+
+send_task("registration_data", payload)
